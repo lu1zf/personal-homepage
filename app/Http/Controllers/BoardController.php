@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Board\StoreBoard;
+use App\Actions\Board\UpdateBoard;
 use App\Http\Requests\StoreBoardRequest;
 use App\Http\Requests\UpdateBoardRequest;
 use Illuminate\Http\Response;
@@ -58,9 +59,12 @@ class BoardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBoardRequest $request, Board $board)
+    public function update(UpdateBoardRequest $request, Board $board, UpdateBoard $action)
     {
-        //
+        $updated = $action->handle($request->validated(), $board);
+
+        if ($updated)
+            return Response::success(Board::find($board->id));
     }
 
     /**
