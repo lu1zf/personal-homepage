@@ -2,7 +2,6 @@
 
 namespace App\Actions\Board;
 
-use App\Http\Requests\StoreBoardRequest;
 use App\Models\User;
 class StoreBoard
 {
