@@ -17,7 +17,7 @@ class BoardController extends Controller
      */
     public function index()
     {
-
+        return Board::where("user_id", Auth::user()->id)->get();
     }
 
     /**
