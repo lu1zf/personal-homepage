@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
@@ -14,9 +15,9 @@ class UserController extends Controller
         $user = User::create($request->validated());
 
         if ($user) {
-            return response()->created($user);
+            return Response::created($user);
         }
 
-        return response()->error("Could not create the user", 400);
+        return Response::error("Could not create the user", 400);
     }
 }
