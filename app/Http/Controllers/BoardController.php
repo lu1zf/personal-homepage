@@ -35,7 +35,7 @@ class BoardController extends Controller
     {
         $created = $action->handle($request->validated(), Auth::user());
         if ($created)
-            return Response::success($created);
+            return Response::created($created);
 
         return Response::error("Could not create the board");
     }
